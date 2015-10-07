@@ -1,3 +1,36 @@
+//For p1 & p2 keypress up and down
+
+void keyPressed() {
+  if (key == 'a') {
+    p1.vy = -5;
+  }
+  if (key == 'z') {
+    p1.vy = 5;
+  }
+  if (key == ';') {
+    p2.vy = -5;
+  }
+  if (key == '.') {
+    p2.vy = 5;
+  }
+}
+
+void keyReleased() {
+  if (key == 'a' && p1.vy < 0) {
+    p1.vy = 0;
+  }
+  if (key == 'z' && p1.vy > 0) {
+    p1.vy = 0;
+  }
+  if (key == ';' && p2.vy < 0) {
+    p2.vy = 0;
+  }
+  if (key == '.' && p2.vy > 0) {
+    p2.vy = 0;
+  }
+}
+
+
 //Links to sound 
 //"renamed to ping in folder" http://soundbible.com/1004-Frying-Pan-Hit.html
 //"renamed to bam in folder" http://soundbible.com/1005-Frying-Pan-Impact.html
@@ -149,34 +182,3 @@ void draw() {
   drawScores();
 }
 
-//For p1 & p2 keypress up and down
-
-void keyPressed() {
-  if (key == 'a') {
-    p1.vy = -5;
-  }
-  if (key == 'z') {
-    p1.vy = 5;
-  }
-  if (key == ';') {
-    p2.vy = -5;
-  }
-  if (key == '.') {
-    p2.vy = 5;
-  }
-}
-
-void keyReleased() {
-  if (key == 'a' && p1.vy < 0) {
-    p1.vy = 0;
-  }
-  if (key == 'z' && p1.vy > 0) {
-    p1.vy = 0;
-  }
-  if (key == ';' && p2.vy < 0) {
-    p2.vy = 0;
-  }
-  if (key == '.' && p2.vy > 0) {
-    p2.vy = 0;
-  }
-}
