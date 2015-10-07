@@ -1,19 +1,15 @@
 import ddf.minim.*;
 
 class Ball {
-  float x, y;
-  float vx, vy;
-  float size = 10;
+  float initialX, initialY, x, y, vx, vy, size = 10;
   color c;
 
   Ball(float x, float y, color c) {
-    this.x = x;
-    this.y = y;
+    this.x = initialX = x;
+    this.y = initialY = y;
     this.c = c;
-    
-    // Controls the speed of ball
-    vx = random(1)+1.5;
-    vy = random(1);
+    vx = 2;
+    vy = 1;
   }
 
   void draw() {
@@ -23,13 +19,13 @@ class Ball {
   }
 
   void reset() {
-    x=x;
-    y=y;
-    vx =random(1)+1.5;
+    x = initialX;
+    y = initialY;
+    vx = 2+random(1);
     if (random(1) < 0.5) {
       vx = -vx;
     }
-    vy = random(1) - 1.5;
+    vy = random(2)-1;
   }
 
   void move() {
@@ -44,7 +40,8 @@ class Ball {
     if (x-size < p1.x + p1.w) {
       if (y > p1.y &&
         y < p1.y + p1.h) {
-        vx = -vx*1.5;
+        //triggers the speed of the ball when hit p1
+        vx = -vx*1.3;
         ping.trigger();
       } else {
         rightScore++;
@@ -55,7 +52,8 @@ class Ball {
     if (x+size > p2.x) {
       if (y > p2.y &&
         y < p2.y + p2.h) {
-        vx = -vx*1.5;
+        //triggers the speed of the ball when hit p2
+        vx = -vx*1.3;
         ping.trigger();
       } else {
         leftScore++;
@@ -97,6 +95,7 @@ Paddle p1, p2;
 int leftScore = 0;
 int rightScore = 0;
 
+//sound for paddle 
 
 import ddf.minim.*;
 
@@ -127,8 +126,8 @@ void setup() {
 
 void drawScores() {
   textSize(40);
-  text(""+leftScore, width/2-40, 60);
-  text(""+rightScore, width/2+20, 60);
+  text(""+leftScore, width/2-40, 50);
+  text(""+rightScore, width/2+40, 50);
 }
 
 void draw() {
@@ -146,7 +145,9 @@ void draw() {
   drawScores();
 }
 
-//keypress up and down for each paddles 
+
+//For p1 & p2 keypress up and down
+
 void keyPressed() {
   if (key == 'a') {
     p1.vy = -5;
@@ -154,10 +155,10 @@ void keyPressed() {
   if (key == 'z') {
     p1.vy = 5;
   }
-  if (key == 'k') {
+  if (key == ';') {
     p2.vy = -5;
   }
-  if (key == 'm') {
+  if (key == '.') {
     p2.vy = 5;
   }
 }
@@ -169,10 +170,10 @@ void keyReleased() {
   if (key == 'z' && p1.vy > 0) {
     p1.vy = 0;
   }
-  if (key == 'l' && p2.vy < 0) {
+  if (key == ';' && p2.vy < 0) {
     p2.vy = 0;
   }
-  if (key == 'm' && p2.vy > 0) {
+  if (key == '.' && p2.vy > 0) {
     p2.vy = 0;
   }
 }
