@@ -1,3 +1,7 @@
+//Links to sound 
+//"renamed to ping in folder" http://soundbible.com/1004-Frying-Pan-Hit.html
+//"renamed to bam in folder" http://soundbible.com/1005-Frying-Pan-Impact.html
+
 import ddf.minim.*;
 
 class Ball {
@@ -144,7 +148,6 @@ void draw() {
   p2.draw();
   drawScores();
 }
-
 
 //For p1 & p2 keypress up and down
 
